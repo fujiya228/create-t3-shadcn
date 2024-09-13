@@ -1,7 +1,7 @@
 {
-  "name": "create-t3-shadcn",
+  "name": "create-with-shadcn",
   "version": "0.0.1",
-  "description": "setup a new web application with t3 stack and shadcn/ui",
+  "description": "setup a new frameworks app with shadcn/ui",
   "license": "MIT",
   "author": {
     "name": "fujiya228",
@@ -13,7 +13,7 @@
     "directory": "cli"
   },
   "keywords": [
-    "create-t3-shadcn",
+    "create-with-shadcn",
     "create-t3-app",
     "t3-stack",
     "shadcn"
