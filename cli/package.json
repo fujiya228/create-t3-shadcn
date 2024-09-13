@@ -35,6 +35,7 @@
     "format:check": "prettier --check \"**/*.{ts,tsx,mdx}\" --cache"
   },
   "dependencies": {
+    "commander": "^12.1.0",
     "fs-extra": "^11.2.0"
   },
   "devDependencies": {
