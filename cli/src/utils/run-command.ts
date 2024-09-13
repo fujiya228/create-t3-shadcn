@@ -6,7 +6,6 @@ export const runCommand = (command: string, cwd?: string) => {
   } catch (error) {
     if (error instanceof Error) {
       console.error(`\nFailed to execute: ${command}\n`);
-      console.error(`Error: ${error.message}\n`);
     }
     process.exit(1);
   }
