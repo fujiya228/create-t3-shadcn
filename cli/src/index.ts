@@ -25,6 +25,11 @@ async function main() {
       "-v, --version",
       "display the version number"
     )
+    .addCommand(init)
+    .showHelpAfterError()
+    .exitOverride(() => {
+      process.exit(0);
+    });
 
   if (!process.argv.slice(2).length) {
     program.outputHelp();
