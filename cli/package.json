@@ -38,6 +38,7 @@
     "pub:release": "pnpm build && pnpm publish --access public"
   },
   "dependencies": {
+    "@clack/prompts": "^0.7.0",
     "commander": "^12.1.0",
     "fs-extra": "^11.2.0"
   },
