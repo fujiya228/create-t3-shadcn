@@ -1,8 +1,10 @@
-import { execSync } from 'child_process';
+import { execa } from 'execa';
 
-export const runCommand = (command: string, cwd?: string) => {
+export const runCommand = async (command: string, cwd?: string) => {
+  const [cmd, ...args] = command.split(' ');
+
   try {
-    execSync(command, { cwd: cwd || process.cwd() });
+    await execa(cmd, args, { cwd: cwd || process.cwd() });
   } catch (error) {
     if (error instanceof Error) {
       console.error(`\nFailed to execute: ${command}\n\n${error.message}\n`);
