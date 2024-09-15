@@ -4,7 +4,7 @@ import * as path from 'path';
 
 export const init = new Command()
   .name('init')
-  .description('initialize a new T3 app with shadcn')
+  .description('setup a new frameworks app with shadcn/ui')
   .action(() => {
     const projectName = 'my-t3-app';
 

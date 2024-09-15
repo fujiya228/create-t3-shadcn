@@ -18,8 +18,8 @@ async function main() {
   const packageInfo = await getPackageInfo()
 
   const program = new Command()
-    .name("t3-shadcn")
-    .description("setup a new web application with t3 stack and shadcn/ui")
+    .name("with-shadcn")
+    .description("setup a new frameworks app with shadcn/ui")
     .version(
       packageInfo.version || "1.0.0",
       "-v, --version",
