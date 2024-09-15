@@ -24,7 +24,8 @@
     "create-t3-shadcn": "./dist/index.js"
   },
   "files": [
-    "dist"
+    "dist",
+    "package.json"
   ],
   "scripts": {
     "dev": "tsup --watch",
