@@ -1,20 +1,20 @@
 import { Command } from 'commander';
-import { runCommand } from '@/src/utils/run-command';
-import * as path from 'path';
+import * as p from '@clack/prompts';
+
+import { SetupConfig, buildComponentsConfig, buildSetupConfig } from '@/src/steps/builConfig';
+import { initializeFramework, initilzeShadcnUI } from '@/src/steps/initializers';
 
 export const init = new Command()
   .name('init')
-  .description('setup a new frameworks app with shadcn/ui')
-  .action(() => {
-    const projectName = 'my-t3-app';
+  .description('Setup a new framework app with shadcn/ui')
+  .action(async () => {
+    p.intro('Welcome to the with-shadcn CLI! 🚀');
 
-    console.log('Creating T3 app...');
-    runCommand(`npm create t3-app@latest -- ${projectName}`);
+    // Ask for application configs
+    const setupConfig: SetupConfig = await buildSetupConfig();
 
-    const projectPath = path.join(process.cwd(), projectName);
+    // Initialize the selected framework
+    await initializeFramework(setupConfig);
 
-    console.log('Setting up shadcn...');
-    runCommand('npx shadcn@latest init', projectPath);
-
-    console.log('T3 app with shadcn setup is complete!');
+    p.outro('All done! 🚀');
   });
