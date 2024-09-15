@@ -146,3 +146,28 @@ export async function buildSetupConfig(): Promise<SetupConfig> {
     }
   );
 }
+
+export async function buildComponentsConfig() {
+  return p.group({
+    style: () => p.select({
+      message: 'shadcn/ui: Which style would you like to use?',
+      options: [
+        { value: 'new-york', label: 'New York' },
+        { value: 'default', label: 'Default' },
+      ],
+    }) as Promise<string>,
+    baseColor: () => p.select({
+      message: 'shadcn/ui: Which color would you like to use as the base color?',
+      options: [
+        {　value: "neutral",　label: "Neutral", },
+        {　value: "gray",　label: "Gray", },
+        {　value: "zinc",　label: "Zinc", },
+        {　value: "stone",　label: "Stone", },
+        {　value: "slate",　label: "Slate", },
+      ],
+    }) as Promise<string>,
+    cssVariables: () => p.confirm({
+      message: 'shadcn/ui: Would you like to use CSS variables for theming?',
+    }) as Promise<boolean>,
+  });
+}

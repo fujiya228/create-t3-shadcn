@@ -22,3 +22,28 @@ export async function initializeFramework(setupConfig: SetupConfig) {
 
   spin.stop(`Created a new ${FRAMEWORKS[setupConfig.framework].label} app`);
 }
+
+export async function initilzeShadcnUI(componentsConfig: any, setupConfig: SetupConfig) {
+  // Initialize Shadcn UI
+  const spin = p.spinner();
+  spin.start();
+  spin.message('Installing shadcn/ui');
+
+  const projectPath = path.join(process.cwd(), setupConfig.appName);
+  await runCommand('npx shadcn@latest init -d', projectPath);
+  await overwriteComponetsConfig(componentsConfig, projectPath);
+
+  spin.stop('Installed shadcn/ui');
+}
+
+async function overwriteComponetsConfig(componentsConfig: any, projectPath: string) {
+  const filePath = path.join(projectPath, 'components.json');
+  const data = await fs.readFile(filePath, 'utf-8');
+  const jsonData = JSON.parse(data);
+
+  jsonData.style = componentsConfig.style;
+  jsonData.tailwind.baseColor = componentsConfig.baseColor;
+  jsonData.tailwind.cssVariables = componentsConfig.cssVariables;
+
+  await fs.writeFile(filePath, JSON.stringify(jsonData, null, 2));
+}

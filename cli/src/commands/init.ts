@@ -16,5 +16,10 @@ export const init = new Command()
     // Initialize the selected framework
     await initializeFramework(setupConfig);
 
+    const componentsConfig = await buildComponentsConfig();
+
+    // Initialize Shadcn UI
+    await initilzeShadcnUI(componentsConfig, setupConfig);
+
     p.outro('All done! 🚀');
   });
